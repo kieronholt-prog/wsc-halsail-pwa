@@ -553,7 +553,7 @@ const GITHUB_TOKEN = localStorage.getItem('wsc_github_token') || '';
 
   async function initSW() {
     if (!('serviceWorker' in navigator)) return;
-    swRegistration = await navigator.serviceWorker.register('/sw.js');
+    swRegistration = await navigator.serviceWorker.register('/wsc-halsail-pwa/sw.js');
     console.log('SW registered');
     checkNotifPermission();
   }
