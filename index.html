@@ -417,7 +417,7 @@
     }
 
     // Wait 2s then find the run ID
-    await new Promise(r => setTimeout(r, 2000));
+    await new Promise(r => setTimeout(r, 4000));
     const runsRes = await fetch(
       `https://api.github.com/repos/${GITHUB_ORG}/${GITHUB_REPO}/actions/runs?per_page=5`,
       { headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' } }
@@ -502,10 +502,11 @@
       const conclusion = await pollRunProgress(runId, 'detect');
 
       if (conclusion === 'success') {
-        setProgress('Complete — reloading…');
-        await new Promise(r => setTimeout(r, 1000));
-        await loadReport();
-      } else {
+      setProgress('Complete — reloading…');
+      await new Promise(r => setTimeout(r, 3000));
+      setProgress('');
+      await loadReport();
+  } else {
         setProgress('');
         alert(`Detection ${conclusion || 'failed'}. Check GitHub Actions.`);
       }
