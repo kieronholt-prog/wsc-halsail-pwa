@@ -23,14 +23,13 @@
     body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 80%,rgba(0,180,204,0.08) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 20%,rgba(10,40,80,0.6) 0%,transparent 70%);pointer-events:none;z-index:0;}
     .app{position:relative;z-index:1;min-height:100dvh;display:flex;flex-direction:column;padding:env(safe-area-inset-top,20px) 20px env(safe-area-inset-bottom,20px);max-width:520px;margin:0 auto;}
 
-    /* Header */
     header{display:flex;align-items:flex-start;justify-content:space-between;padding:24px 0 16px;}
     .logo-block h1{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;line-height:1;color:var(--white);}
     .logo-block h1 span{color:var(--teal);}
     .logo-block p{font-size:11px;color:var(--grey);letter-spacing:0.12em;text-transform:uppercase;margin-top:4px;}
     .header-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
-    .version{font-family:'Barlow Condensed',sans-serif;font-size:12px;color:var(--navy3);letter-spacing:0.08em;}
-    .status-dot{width:10px;height:10px;border-radius:50%;background:var(--grey);transition:background 0.3s;}
+    .version{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;color:var(--teal);letter-spacing:0.1em;background:rgba(0,180,204,0.12);border:1px solid rgba(0,180,204,0.3);border-radius:6px;padding:3px 8px;}
+    .status-dot{width:10px;height:10px;border-radius:50%;background:var(--grey);transition:background 0.3s;align-self:flex-end;}
     .status-dot.active{background:var(--green);box-shadow:0 0 8px var(--green);}
     .status-dot.pending{background:var(--gold);box-shadow:0 0 8px var(--gold);animation:pulse 1.5s infinite;}
     .status-dot.error{background:var(--red);box-shadow:0 0 8px var(--red);}
@@ -43,6 +42,7 @@
     .field label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey);}
     .field input{background:var(--navy2);border:1px solid var(--navy3);border-radius:var(--radius);color:var(--white);font-family:'Barlow',sans-serif;font-size:16px;padding:14px 16px;outline:none;transition:border-color 0.2s;}
     .field input:focus{border-color:var(--teal);}
+    .auth-error{font-size:12px;color:var(--red);text-align:center;min-height:16px;}
 
     /* Buttons */
     .btn{display:flex;align-items:center;justify-content:center;gap:10px;border:none;border-radius:var(--radius);font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:16px 24px;cursor:pointer;transition:opacity 0.15s,transform 0.1s;width:100%;}
@@ -55,8 +55,6 @@
 
     /* Main */
     #main-screen{flex:1;display:flex;flex-direction:column;gap:14px;}
-
-    /* Summary cards */
     .summary-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
     .card{background:var(--navy2);border:1px solid var(--navy3);border-radius:var(--radius);padding:14px 10px;text-align:center;}
     .card .count{font-family:'Barlow Condensed',sans-serif;font-size:34px;font-weight:700;line-height:1;}
@@ -65,20 +63,19 @@
     .card.updates .count{color:var(--gold);}
     .card.dupes .count{color:var(--red);}
 
-    /* Timestamp + progress row */
-    .info-row{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:18px;}
+    /* Info row */
+    .info-row{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:22px;}
     .timestamp{font-size:11px;color:var(--grey);letter-spacing:0.04em;flex-shrink:0;}
     .progress-text{font-size:11px;color:var(--teal);letter-spacing:0.04em;text-align:right;flex:1;transition:opacity 0.3s;}
-    .progress-text.hidden-text{opacity:0;}
+    .progress-text.fade{opacity:0;}
 
-    /* Action buttons row */
+    /* Complete badge */
+    .complete-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(32,192,96,0.15);color:var(--green);border:1px solid rgba(32,192,96,0.4);border-radius:20px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;opacity:1;transition:opacity 1s;}
+    .complete-badge.fade{opacity:0;}
+
     .action-row{display:flex;flex-direction:column;gap:8px;}
-
-    /* Notification banner */
     .banner{background:rgba(0,180,204,0.1);border:1px solid rgba(0,180,204,0.25);border-radius:var(--radius);padding:12px 14px;font-size:13px;color:var(--teal2);display:flex;align-items:center;gap:10px;}
     .banner button{margin-left:auto;background:var(--teal);color:var(--navy);border:none;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:6px 12px;cursor:pointer;white-space:nowrap;}
-
-    /* Boat lists */
     .section-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey);padding-bottom:8px;border-bottom:1px solid var(--navy3);}
     .boat-list{display:flex;flex-direction:column;gap:8px;}
     .boat-item{background:var(--navy2);border:1px solid var(--navy3);border-left:3px solid var(--teal);border-radius:var(--radius);padding:12px 14px;}
@@ -87,32 +84,25 @@
     .boat-detail{font-size:12px;color:var(--grey);margin-top:3px;}
     .dupe-badge{display:inline-block;background:rgba(224,48,48,0.15);color:var(--red);border:1px solid rgba(224,48,48,0.3);border-radius:4px;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:2px 6px;margin-bottom:4px;}
     .dupe-detail{font-size:11px;color:var(--grey);margin-top:4px;}
-
-    /* Loading state overlay for initial load only */
     .state-panel{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:40px 20px;}
-    .state-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;}
     .state-sub{font-size:13px;color:var(--grey);max-width:260px;line-height:1.5;}
     .spinner{width:28px;height:28px;border:3px solid var(--navy3);border-top-color:var(--teal);border-radius:50%;animation:spin 0.8s linear infinite;display:inline-block;}
     @keyframes spin{to{transform:rotate(360deg);}}
-
-    /* Empty notice */
     .empty-notice{text-align:center;padding:20px;color:var(--grey);font-size:13px;}
     .empty-icon{font-size:36px;margin-bottom:8px;}
-
-    .hidden{display:none !important;}
     .section-gap{display:flex;flex-direction:column;gap:10px;}
+    .hidden{display:none !important;}
   </style>
 </head>
 <body>
 <div class="app">
-
   <header>
     <div class="logo-block">
       <h1>WSC <span>Entries</span></h1>
       <p>Warsash Sailing Club</p>
     </div>
     <div class="header-right">
-      <span class="version">v1.0</span>
+      <span class="version">v1.1</span>
       <div class="status-dot" id="status-dot"></div>
     </div>
   </header>
@@ -121,52 +111,44 @@
   <div id="auth-screen" class="hidden">
     <p class="auth-title">Access</p>
     <div class="field">
-      <label>PIN</label>
-      <input type="password" inputmode="numeric" maxlength="8" id="pin-input" placeholder="Enter PIN" autocomplete="current-password" />
+      <label>Password</label>
+      <input type="password" id="pin-input" placeholder="Enter password" autocomplete="current-password" />
     </div>
+    <p class="auth-error" id="auth-error"></p>
     <button class="btn btn-primary" id="pin-btn">Unlock</button>
   </div>
 
   <!-- Main screen -->
   <div id="main-screen" class="hidden">
-
-    <!-- Notification banner -->
     <div class="banner hidden" id="notif-banner">
       <span>🔔</span>
       <span>Enable notifications for new entry alerts</span>
       <button id="notif-btn">Enable</button>
     </div>
 
-    <!-- Initial loading state -->
     <div class="state-panel" id="loading-state">
       <div class="spinner"></div>
       <p class="state-sub">Loading…</p>
     </div>
 
-    <!-- Main report panel — always visible once loaded -->
     <div id="report-panel" class="hidden" style="display:flex;flex-direction:column;gap:14px;flex:1">
-
-      <!-- Summary cards -->
       <div class="summary-row">
         <div class="card new"><div class="count" id="count-new">0</div><div class="label">New Entries</div></div>
         <div class="card updates"><div class="count" id="count-updates">0</div><div class="label">To Review</div></div>
         <div class="card dupes"><div class="count" id="count-dupes">0</div><div class="label">Duplicates</div></div>
       </div>
 
-      <!-- Timestamp + live progress -->
       <div class="info-row">
         <span class="timestamp" id="report-time">–</span>
-        <span class="progress-text hidden-text" id="progress-text"></span>
+        <span class="progress-text fade" id="progress-text"></span>
       </div>
 
-      <!-- Action buttons -->
       <div class="action-row">
         <button class="btn btn-detect" id="detect-btn">🔍 Detect New Entries</button>
         <button class="btn btn-import" id="import-btn">⚓ Import New Entries</button>
         <button class="btn btn-secondary" id="refresh-btn">↻ Refresh</button>
       </div>
 
-      <!-- New entries list -->
       <div id="new-boats-section" class="section-gap">
         <p class="section-title">New Entries</p>
         <div class="boat-list" id="new-boats-list">
@@ -174,18 +156,15 @@
         </div>
       </div>
 
-      <!-- Duplicates -->
       <div id="dupes-section" class="hidden section-gap">
         <p class="section-title">⚠️ Possible Duplicates</p>
         <div class="boat-list" id="dupes-list"></div>
       </div>
 
-      <!-- Updates note -->
       <div id="updates-section" class="hidden section-gap">
         <p class="section-title">Update Existing (set to Ignore)</p>
         <div class="boat-list" id="updates-note"></div>
       </div>
-
     </div>
   </div>
 </div>
@@ -197,49 +176,82 @@
   const GITHUB_REPO      = 'wsc-halsail-import';
   const getGithubToken   = () => localStorage.getItem('wsc_github_token') || '';
   const $                = (id) => document.getElementById(id);
-  const PIN_KEY          = 'wsc_pin_hash';
+  const AUTH_KEY         = 'wsc_auth_hash';
 
-  // ---- Auth ----
-  async function hashPin(pin) {
-    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pin));
+  // ---- Password auth (hashed, works across any device) ----
+  async function hashValue(val) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(val));
     return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
   }
 
   async function checkAuth() {
-    const stored = localStorage.getItem(PIN_KEY);
+    const stored = localStorage.getItem(AUTH_KEY);
     if (!stored) {
-      const pin = prompt('Set a PIN for this app (4-8 digits):');
-      if (!pin || pin.length < 4) { checkAuth(); return; }
-      localStorage.setItem(PIN_KEY, await hashPin(pin));
+      // First run — set password
+      const pw = prompt('Set an access password for this app:');
+      if (!pw || pw.length < 4) { checkAuth(); return; }
+      localStorage.setItem(AUTH_KEY, await hashValue(pw));
       if (!localStorage.getItem('wsc_github_token')) {
         const token = prompt('Enter your GitHub PAT token:');
         if (token) localStorage.setItem('wsc_github_token', token);
       }
+      // Store password hash in worker for cross-device verification
+      await registerPassword(pw);
       showMain();
     } else {
       $('auth-screen').classList.remove('hidden');
     }
   }
 
+  async function registerPassword(pw) {
+    const hash = await hashValue(pw + 'wsc-salt-2026');
+    try {
+      await fetch(`${CF_WORKER_URL}/auth-register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ hash }),
+      });
+    } catch {}
+  }
+
   $('pin-btn').addEventListener('click', async () => {
-    const pin = $('pin-input').value;
-    const hash = await hashPin(pin);
-    if (hash === localStorage.getItem(PIN_KEY)) {
-      $('auth-screen').classList.add('hidden');
-      showMain();
-    } else {
-      $('pin-input').value = '';
-      $('pin-input').placeholder = 'Incorrect PIN';
+    const pw = $('pin-input').value;
+    if (!pw) return;
+    const hash = await hashValue(pw + 'wsc-salt-2026');
+
+    // Verify against worker
+    try {
+      const res = await fetch(`${CF_WORKER_URL}/auth-verify`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ hash }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        // Store locally and proceed
+        localStorage.setItem(AUTH_KEY, await hashValue(pw));
+        localStorage.setItem('wsc_auth_token', hash);
+        if (!localStorage.getItem('wsc_github_token')) {
+          const token = prompt('Enter your GitHub PAT token:');
+          if (token) localStorage.setItem('wsc_github_token', token);
+        }
+        $('auth-screen').classList.add('hidden');
+        $('auth-error').textContent = '';
+        showMain();
+      } else {
+        $('auth-error').textContent = 'Incorrect password';
+        $('pin-input').value = '';
+      }
+    } catch {
+      $('auth-error').textContent = 'Could not connect. Check your internet.';
     }
   });
 
   $('pin-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') $('pin-btn').click(); });
 
-  // ---- PWA token ----
-  function getPwaToken() {
-    let token = localStorage.getItem('wsc_pwa_token');
-    if (!token) { token = crypto.randomUUID(); localStorage.setItem('wsc_pwa_token', token); }
-    return token;
+  // Auth token for API calls (password hash replaces pwa_token)
+  function getAuthToken() {
+    return localStorage.getItem('wsc_auth_token') || '';
   }
 
   // ---- Service Worker + Push ----
@@ -271,7 +283,7 @@
       });
       await fetch(`${CF_WORKER_URL}/subscribe`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-PWA-Token': getPwaToken() },
+        headers: { 'Content-Type': 'application/json', 'X-Auth-Token': getAuthToken() },
         body: JSON.stringify(sub),
       });
       setDot('active');
@@ -284,34 +296,43 @@
     return Uint8Array.from([...atob(s)].map(c=>c.charCodeAt(0)));
   }
 
-  // ---- Status dot ----
   function setDot(state) {
     const dot = $('status-dot');
     dot.className = 'status-dot';
     if (state) dot.classList.add(state);
   }
 
-  // ---- Progress text ----
   function setProgress(text) {
     const el = $('progress-text');
-    if (text) { el.textContent = text; el.classList.remove('hidden-text'); }
-    else { el.textContent = ''; el.classList.add('hidden-text'); }
+    if (text) { el.textContent = text; el.classList.remove('fade'); }
+    else { el.classList.add('fade'); setTimeout(() => { el.textContent = ''; }, 300); }
   }
 
-  // ---- Main ----
+  function showCompleteBadge() {
+    const el = $('progress-text');
+    el.innerHTML = '<span class="complete-badge">✓ Complete</span>';
+    el.classList.remove('fade');
+    setTimeout(() => {
+      const badge = el.querySelector('.complete-badge');
+      if (badge) badge.classList.add('fade');
+      setTimeout(() => { el.textContent = ''; el.classList.add('fade'); }, 1000);
+    }, 2000);
+  }
+
   function showMain() {
     $('main-screen').classList.remove('hidden');
     initSW();
     loadReport();
   }
 
-  // ---- Load report from KV ----
   async function loadReport() {
     $('loading-state').classList.remove('hidden');
     $('report-panel').classList.add('hidden');
     setDot('pending');
     try {
-      const res = await fetch(`${CF_WORKER_URL}/report`, { headers: { 'X-PWA-Token': getPwaToken() } });
+      const res = await fetch(`${CF_WORKER_URL}/report`, {
+        headers: { 'X-Auth-Token': getAuthToken() },
+      });
       if (!res.ok) throw new Error(`${res.status}`);
       const data = await res.json();
       renderReport(data.empty ? null : data);
@@ -323,11 +344,10 @@
     $('report-panel').classList.remove('hidden');
   }
 
-  // ---- Render report ----
   function renderReport(data) {
-    const addNew      = data?.addNew ?? 0;
-    const updateEx    = data?.updateExisting ?? 0;
-    const dupesCount  = data?.duplicatesCount ?? 0;
+    const addNew     = data?.addNew ?? 0;
+    const updateEx   = data?.updateExisting ?? 0;
+    const dupesCount = data?.duplicatesCount ?? 0;
 
     $('count-new').textContent     = addNew;
     $('count-updates').textContent = updateEx;
@@ -340,7 +360,6 @@
       $('report-time').textContent = 'No pending entries';
     }
 
-    // New boats
     const newList = $('new-boats-list');
     newList.innerHTML = '';
     if (addNew > 0 && data?.newBoats?.length) {
@@ -354,9 +373,8 @@
       newList.innerHTML = '<div class="empty-notice"><div class="empty-icon">⛵</div>No new entries pending</div>';
     }
 
-    // Duplicates
     const dupesSection = $('dupes-section');
-    const dupesList    = $('dupes-list');
+    const dupesList = $('dupes-list');
     dupesList.innerHTML = '';
     if (dupesCount > 0 && data?.duplicates?.length) {
       dupesSection.classList.remove('hidden');
@@ -366,20 +384,14 @@
         el.innerHTML = `<div class="dupe-badge">Possible Duplicate</div><div class="boat-helm">${esc(d.helm)} · ${esc(d.className)}</div><div class="dupe-detail">Existing: Sail ${esc(d.existing.sailNo)}${d.existing.crew?' / '+esc(d.existing.crew):''}<br>Incoming: Sail ${esc(d.incoming.sailNo)}${d.incoming.crew?' / '+esc(d.incoming.crew):''}</div>`;
         dupesList.appendChild(el);
       });
-    } else {
-      dupesSection.classList.add('hidden');
-    }
+    } else { dupesSection.classList.add('hidden'); }
 
-    // Updates
     const updatesSection = $('updates-section');
     if (updateEx > 0) {
       updatesSection.classList.remove('hidden');
-      $('updates-note').innerHTML = `<div class="boat-item" style="border-left-color:var(--gold)"><div class="boat-detail" style="color:var(--gold)">${updateEx} boat${updateEx!==1?'s':''} with updated details will be set to <strong>Ignore</strong>. Review in Halsail.</div></div>`;
-    } else {
-      updatesSection.classList.add('hidden');
-    }
+      $('updates-note').innerHTML = `<div class="boat-item" style="border-left-color:var(--gold)"><div class="boat-detail" style="color:var(--gold)">${updateEx} boat${updateEx!==1?'s':''} with updated details set to <strong>Ignore</strong>. Review in Halsail.</div></div>`;
+    } else { updatesSection.classList.add('hidden'); }
 
-    // Import button — disabled if nothing to import
     $('import-btn').disabled = addNew === 0;
     setDot(dupesCount > 0 ? 'error' : addNew > 0 ? 'pending' : 'active');
   }
@@ -388,102 +400,73 @@
     return (str||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
 
-  // ---- GitHub Actions API ----
   async function triggerWorkflow(workflowFile, eventType) {
     const token = getGithubToken();
     if (!token) { alert('GitHub token not set. Please reinstall the app.'); return null; }
-
-    // Trigger the workflow
     let res;
     if (eventType) {
-      // repository_dispatch for import
       res = await fetch(`https://api.github.com/repos/${GITHUB_ORG}/${GITHUB_REPO}/dispatches`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
         body: JSON.stringify({ event_type: eventType }),
       });
     } else {
-      // workflow_dispatch for detect
       res = await fetch(`https://api.github.com/repos/${GITHUB_ORG}/${GITHUB_REPO}/actions/workflows/${workflowFile}/dispatches`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
         body: JSON.stringify({ ref: 'main' }),
       });
     }
-
-    if (res.status !== 204) {
-      console.error('Trigger failed:', res.status);
-      return null;
-    }
-
-    // Wait 2s then find the run ID
+    if (res.status !== 204) { console.error('Trigger failed:', res.status); return null; }
     await new Promise(r => setTimeout(r, 4000));
     const runsRes = await fetch(
       `https://api.github.com/repos/${GITHUB_ORG}/${GITHUB_REPO}/actions/runs?per_page=5`,
       { headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' } }
     );
     const runsData = await runsRes.json();
-    const run = runsData.workflow_runs?.[0];
-    return run?.id || null;
+    return runsData.workflow_runs?.[0]?.id || null;
   }
 
-  async function pollRunProgress(runId, mode) {
+  async function pollRunProgress(runId) {
     const token = getGithubToken();
     let attempts = 0;
-    const maxAttempts = 60; // 5 mins
+    const friendly = {
+      'Checkout': 'Checking out…',
+      'Setup Node.js': 'Setting up Node.js…',
+      'Install dependencies': 'Installing dependencies…',
+      'Cache Playwright browsers': 'Checking cache…',
+      'Install Playwright browsers': 'Installing Playwright…',
+      'Install Playwright system deps only': 'Loading system deps…',
+      'Run detection': 'Running detection…',
+      'Run import': 'Running import…',
+    };
 
     return new Promise((resolve) => {
       const interval = setInterval(async () => {
         attempts++;
-        if (attempts > maxAttempts) {
-          clearInterval(interval);
-          setProgress('');
-          resolve('timeout');
-          return;
-        }
-
+        if (attempts > 72) { clearInterval(interval); setProgress(''); resolve('timeout'); return; }
         try {
-          // Get jobs for this run
           const jobsRes = await fetch(
             `https://api.github.com/repos/${GITHUB_ORG}/${GITHUB_REPO}/actions/runs/${runId}/jobs`,
             { headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' } }
           );
           const jobsData = await jobsRes.json();
           const job = jobsData.jobs?.[0];
-
           if (!job) { setProgress('Queued…'); return; }
-
           if (job.status === 'completed') {
             clearInterval(interval);
             setProgress('');
             resolve(job.conclusion);
             return;
           }
-
-          // Find the currently running step
           const activeStep = job.steps?.find(s => s.status === 'in_progress');
-          const stepName = activeStep?.name || job.status;
-
-          // Friendly names
-          const friendly = {
-            'Checkout': 'Checking out code…',
-            'Setup Node.js': 'Setting up Node.js…',
-            'Install dependencies': 'Installing dependencies…',
-            'Install Playwright browsers': 'Installing Playwright…',
-            'Run detection': 'Running detection…',
-            'Run import': 'Running import…',
-          };
-
+          const stepName = activeStep?.name || 'Running…';
           setProgress(friendly[stepName] || stepName + '…');
-
-        } catch (err) {
-          console.error('Poll error:', err);
-        }
+        } catch {}
       }, 5000);
     });
   }
 
-  // ---- Button handlers ----
   let isRunning = false;
 
   $('detect-btn').addEventListener('click', async () => {
@@ -493,20 +476,16 @@
     $('import-btn').disabled = true;
     setDot('pending');
     setProgress('Triggering…');
-
     try {
       const runId = await triggerWorkflow('detect.yml', null);
       if (!runId) throw new Error('Could not trigger detect');
-
       setProgress('Queued…');
-      const conclusion = await pollRunProgress(runId, 'detect');
-
+      const conclusion = await pollRunProgress(runId);
       if (conclusion === 'success') {
-      setProgress('Complete — reloading…');
-      await new Promise(r => setTimeout(r, 3000));
-      setProgress('');
-      await loadReport();
-  } else {
+        showCompleteBadge();
+        await new Promise(r => setTimeout(r, 1500));
+        await loadReport();
+      } else {
         setProgress('');
         alert(`Detection ${conclusion || 'failed'}. Check GitHub Actions.`);
       }
@@ -514,7 +493,6 @@
       setProgress('');
       alert('Could not trigger detection. Check your connection.');
     }
-
     isRunning = false;
     $('detect-btn').disabled = false;
   });
@@ -522,23 +500,19 @@
   $('import-btn').addEventListener('click', async () => {
     if (isRunning) return;
     const count = $('count-new').textContent;
-    if (!confirm(`Import ${count} new ${count === '1' ? 'entry' : 'entries'} to Halsail?`)) return;
-
+    if (!confirm(`Import ${count} new ${count==='1'?'entry':'entries'} to Halsail?`)) return;
     isRunning = true;
     $('detect-btn').disabled = true;
     $('import-btn').disabled = true;
     setDot('pending');
     setProgress('Triggering…');
-
     try {
       const runId = await triggerWorkflow(null, 'run-import');
       if (!runId) throw new Error('Could not trigger import');
-
       setProgress('Queued…');
-      const conclusion = await pollRunProgress(runId, 'import');
-
+      const conclusion = await pollRunProgress(runId);
       if (conclusion === 'success') {
-        setProgress('Import complete — reloading…');
+        showCompleteBadge();
         await new Promise(r => setTimeout(r, 1500));
         await loadReport();
       } else {
@@ -549,16 +523,12 @@
       setProgress('');
       alert('Could not trigger import. Check your connection.');
     }
-
     isRunning = false;
     $('detect-btn').disabled = false;
   });
 
-  $('refresh-btn').addEventListener('click', () => {
-    if (!isRunning) loadReport();
-  });
+  $('refresh-btn').addEventListener('click', () => { if (!isRunning) loadReport(); });
 
-  // ---- Boot ----
   checkAuth();
 </script>
 </body>
